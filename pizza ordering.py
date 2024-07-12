@@ -1,3 +1,4 @@
+flag = True
 # creating a class named Order contains the order options
 class Order:
     # initializing the menu and order
@@ -27,16 +28,15 @@ class Order:
         '''
             add the chosen pizza to the order
         '''
-        size = size.lower()
 
         # check if the chosen pizza is in the menu
         if pizza_name not in self.menu:
-            print ("Not valid name")
+            print ("Invalid name")
             return
         
         # check if the size of the chosen pizza is in the menu
         if size not in self.menu[pizza_name]:
-            print ("Not valid size")
+            print ("Invalid size")
             return
         
         # add the name and the size and the cost of the pizza to the list of the order
@@ -52,16 +52,15 @@ class Order:
         # check if the order is empty
         if len(self.order) == 0:
             flag = False
-
+            return
+        
         # displaying the information of the order
-        else:
-            cost = 0
-            for pizza,size,cst in self.order:
-                print (f"- {size} {pizza} pizza")
-                cost += cst
-            print (f"Total cost: {cost} EGP")
-            self.order.clear()
-            flag = True
+        cost = 0
+        for pizza,size,cst in self.order:
+            print (f"- {size} {pizza} pizza")
+            cost += cst
+        print (f"Total cost: {cost} EGP")
+        self.order.clear()
 
 # make an object calls order from the Order class
 order = Order()
@@ -69,14 +68,16 @@ order = Order()
 # call the display_menu method
 order.display_menu()
 
+
+# A while True for take the order from the customer
 while True:
+    
     # take the name of pizza from customer
     name = input("Enter pizza name or type \"done\" to finish your order : ")
     name = name.lower()
 
     # if the customer chose to end the order
     if name == 'done':
-        end_order = order.calculate_total_cost()
 
         # check if the customer chose to end the order and the order stills empty
         if flag == False:
@@ -84,13 +85,13 @@ while True:
             continue
 
         # call the calculate_total_cost method
-        end_order
+        order.calculate_total_cost()
 
         # ask the customer if he would to order again
         con = input("Would you like to place another order (yes/no): ")
         con = con.lower()
 
-        # end the program if the customer don't order again
+        # end the program if the customer doesn't order again
         if con == 'no':
             print ("Thank you for using our pizza ordering app ^_*")
             break
