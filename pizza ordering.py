@@ -1,4 +1,3 @@
-flag = True
 # creating a class named Order contains the order options
 class Order:
     # initializing the menu and order
@@ -43,17 +42,17 @@ class Order:
         pizza = [pizza_name,size,self.menu[pizza_name][size]]
         self.order.append(pizza)
 
+    def check_empty_order(self) -> bool:
+
+        # check if the order is empty
+        if len(self.order) == 0: return False
+        return True
+
     def calculate_total_cost(self):
         '''
             display the information of the order to customer
         '''
-        global flag
 
-        # check if the order is empty
-        if len(self.order) == 0:
-            flag = False
-            return
-        
         # displaying the information of the order
         cost = 0
         for pizza,size,cst in self.order:
@@ -79,8 +78,11 @@ while True:
     # if the customer chose to end the order
     if name == 'done':
 
+        # call the check_empty_order method
+        empty = order.check_empty_order()
+
         # check if the customer chose to end the order and the order stills empty
-        if flag == False:
+        if empty == False:
             print ("Your order is empty. Please enter your order.")
             continue
 
