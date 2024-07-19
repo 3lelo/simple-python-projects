@@ -49,12 +49,8 @@ def average():
     if not cities:
         print ("\nThere's no cities!")
         return
-    
-    pops = []
-    for population in cities.values():
-        pops.append(population)
 
-    print (f"\nThe average of population for all cities is {mean(pops):.2f}")
+    print (f"\nThe average of population for all cities is {mean(cities.values()):.2f}")
 
 print ("Welcome to the Cities Management System!")
 
