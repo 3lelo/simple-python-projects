@@ -1,16 +1,16 @@
-from random import randint, choice
+from random import randint, choice, shuffle
 import string
 
 all_passwords = []
 
 def generate_password(size):
-    l_letters = randint(1,size)
+    l_letters = randint(1,size - 3)
 
     size -= l_letters
-    u_letters = randint(1,size)
+    u_letters = randint(1,size - 2)
 
     size -= u_letters
-    digits = randint(1,size)
+    digits = randint(1,size - 1)
 
     size -= digits
     punctuation = size
@@ -27,6 +27,11 @@ def generate_password(size):
 
     for i in range (punctuation):
         password += choice(string.punctuation)
+
+    password = list(password)
+    shuffle(password)
+
+    password = ''.join(password)
 
     print (f"\nYour password is : {password}")
 
@@ -57,7 +62,7 @@ while size != 'quit':
 
 if all_passwords:
     print ("\nYour generated passwords are : ")
-    
+
     for password in all_passwords:
         print (f"- {password}")
 
