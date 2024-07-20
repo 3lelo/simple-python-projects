@@ -54,12 +54,12 @@ def all_recipes():
     
     print ()
     for recipe in recipes:
+        print (f"The ingredients of {recipe} :")
+        
         if not recipes[recipe]:
             print (f"There's no ingredients for the recipe {recipe}")
             continue
-        
-        print (f"The ingredients of {recipe} :")
-
+            
         for ingredient, quantity in recipes[recipe].items():
             print (f"- {ingredient} : {quantity}")
 
