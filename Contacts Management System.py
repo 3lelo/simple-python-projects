@@ -7,7 +7,7 @@ def menu():
     print ("4. Delete a contact")
     print ("5. Exit")
 
-def add_contact(name,number):
+def add_contact(name):
     name = name.title()
     
     if name == '':
@@ -18,12 +18,14 @@ def add_contact(name,number):
         print (f"\nThe contact with name '{name}' is already exist!\n")
         return
 
+    number = input(f"Enter {name}'s number : ")
+
     if not (number.isdigit()):
-        print ("\nEnter a valid number format please\n")
+        print ("\nEnter a valid number format\n")
         return
 
     if len(number) != 10:
-        print ("\nThe umber should be 10 digits\n")
+        print ("\nThe number should be 10 digits\n")
         return
     
 
@@ -33,7 +35,7 @@ def add_contact(name,number):
     start.append(number[2])
     
     if start != ['0','5','9'] and start != ['0','5','6']:
-        print ("\nThe number introduction format is wrong\nit should be '059' or '056'\n")
+        print ("\nThe number introduction format is wrong\nIt should be '059' or '056'\n")
         return
     
     contacts[name] = number
@@ -50,7 +52,13 @@ def all():
         print (f"- {name} : {number}")
     print()
 
-def search(name):
+def search():
+    if not contacts:
+        print ("\nThere's no contacts yet\n")
+        return
+    
+    name = input("Enter the contact name : ")
+    
     name = name.title()
 
     if name == '':
@@ -58,13 +66,24 @@ def search(name):
         return
     
     if name not in contacts:
-        print (f"\nThe contact with name '{name}' doesn't exist!\n")
+        print (f"\nThe contact with name '{name}' doesn't exist!\nThe contacts are:")
+
+        for name,number in contacts.items():
+            print (f"- {name} : {number}")
+        print()
+        
         return
     
-    print (f"\nThe {name}'s number is : {contacts[name]}\n")
+    print (f"\n{name}'s number is : {contacts[name]}\n")
 
 
-def delete(name):
+def delete():
+    if not contacts:
+        print ("\nThere's no contacts yet\n")
+        return
+    
+    name = input("Enter the contact name : ")
+    
     name = name.title()
 
     if name == '':
@@ -72,7 +91,12 @@ def delete(name):
         return
     
     if name not in contacts:
-        print (f"\nThe contact with name '{name}' doesn't exist!\n")
+        print (f"\nThe contact with name '{name}' doesn't exist!\nThe contacts are:")
+
+        for name,number in contacts.items():
+            print (f"- {name} : {number}")
+        print()
+
         return
     
     del(contacts[name])
@@ -89,20 +113,14 @@ while True:
 
     elif choice == '1':
         name = input("Enter the contact name : ")
-        number = input(f"Enter the {name}'s number : ")
-        add_contact(name,number)
+        add_contact(name)
 
     elif choice == '2':
         all()
 
     elif choice in ['3','4']:
-        name = input("Enter the contact name : ")
-
-        if choice == '3':
-            search(name)
-        
-        else:
-            delete(name)
+        if choice == '3': search()
+        else: delete()
     
     else:
         print ("\nEnter a Valid option please!\n")
