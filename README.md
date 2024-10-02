@@ -1,4 +1,7 @@
-# This is the harvest of five months of training, and there is much more and more. Then finally, I got the 5th place at Code Challenge Championship in Egypt :)
+# This is the harvest of five months of training, and there is much more and more.
+# Then finally, I got the 5th place in all category (Python Senior)
+# 🥈2nd place in best programming (Pytho Senior), at Code Challenge Championship in Egypt
+
 You can try to run any program by removing the comment from it (The programs are between the (=) marks)
 
 ```py
