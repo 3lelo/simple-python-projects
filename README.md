@@ -2,7 +2,7 @@
 # Then finally, I got the 5th place in all category (Python Senior)
 # 🥈2nd place in best programming (Pytho Senior), at Code Challenge Championship in Egypt
 
-You can try to run any program by removing the comment from it (The programs are between the (=) marks)
+You can run any program you want by removing the comment from it (The programs are between the (=) marks)
 
 ```py
 # from turtle import *
